@@ -1,0 +1,23 @@
+name: Update usage graph
+on:
+  schedule:
+  - cron: "5 0 * * *" # 5 minutes after the Supabase daily_logs should've updated
+  workflow_dispatch:
+jobs:
+  generate-usage-graph:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+      - name: Generate graph
+        run: |
+          npm install chartjs-node-canvas @supabase/supabase-js
+          node ./generateChart.js
+          pwd
+          tree -L 1
+      - name: Commit image
+        uses: EndBug/add-and-commit@v9.1.4
+        with:
+          add: "./usageGraph.png"
+          default_author: github_actions
