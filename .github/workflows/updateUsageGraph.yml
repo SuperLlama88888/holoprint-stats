@@ -1,7 +1,7 @@
 name: Update usage graph
 on:
   schedule:
-  - cron: "5 0 * * *" # 5 minutes after the Supabase daily_logs should've updated
+  - cron: "1 0 * * *" # 1 minute after the Supabase daily_logs should've updated
   workflow_dispatch:
 jobs:
   generate-usage-graph:
@@ -19,6 +19,6 @@ jobs:
       - name: Commit image
         uses: EndBug/add-and-commit@v9.1.4
         with:
-          add: '["./usageGraph.png", "./dailyLogs.csv"]'
+          add: '["./usageGraph.png", "./dailyLogs.csv", "./dailyLogs.json"]'
           default_author: github_actions
           message: "Update usage graph"

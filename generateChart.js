@@ -5,6 +5,7 @@ const { createClient: createSupabaseClient } = require("@supabase/supabase-js");
 
 const outputImagePath = "usageGraph.png";
 const csvFilePath = "dailyLogs.csv";
+const jsonFilePath = "dailyLogs.json";
 
 const graphFont = "xkcd-script";
 
@@ -99,5 +100,9 @@ supabase.from("daily_logs").select().then(async res => {
 		csvData += "\n" + csvColumns.map(col => row[col]).join(",");
 	});
 	fs.writeFileSync(path.join(__dirname, csvFilePath), csvData);
-	console.log(`Data log has been saved as ${csvFilePath}`);
+	console.log(`CSV data log has been saved as ${csvFilePath}`);
+	
+	let jsonData = JSON.stringify(data);
+	fs.writeFileSync(path.join(__dirname, jsonFilePath), jsonData);
+	console.log(`JSON data log has been saved as ${jsonFilePath}`);
 });
