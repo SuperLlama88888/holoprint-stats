@@ -19,5 +19,6 @@ jobs:
       - name: Commit image
         uses: EndBug/add-and-commit@v9.1.4
         with:
-          add: "./usageGraph.png"
+          add: '["./usageGraph.png", "./dailyLogs.csv"]'
           default_author: github_actions
+          message: "Update usage graph"
