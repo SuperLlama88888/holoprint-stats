@@ -10,11 +10,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
+      - name: Cache NPM dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
       - name: Generate graph
         run: |
-          npm install chartjs-node-canvas @supabase/supabase-js
-          node ./generateChart.js
-          pwd
+          npm install
+          npm start
           tree -L 1
       - name: Commit image
         uses: EndBug/add-and-commit@v9.1.4

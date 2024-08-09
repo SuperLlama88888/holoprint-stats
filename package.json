@@ -1,0 +1,14 @@
+{
+	"name": "holoprint-stats",
+	"version": "1.0.0",
+	"description": "Generator of HoloPrint statistic graphs.",
+	"homepage": "https://github.com/SuperLlama88888/holoprint-stats",
+	"main": "generateChart.js",
+	"scripts": {
+		"start": "node generateChart.js"
+	},
+	"dependencies": {
+		"chartjs-node-canvas": "^4.1.6",
+		"@supabase/supabase-js": "^2.45.1"
+	}
+}
