@@ -1,7 +1,7 @@
 name: Update usage graph
 on:
   schedule:
-  - cron: "1 0 * * *" # 1 minute after the Supabase daily_logs should've updated
+    - cron: "1 0 * * *" # 1 minute after the Supabase daily_logs should've updated
   workflow_dispatch:
 jobs:
   generate-usage-graph:
