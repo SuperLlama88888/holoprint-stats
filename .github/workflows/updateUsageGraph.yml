@@ -1,7 +1,7 @@
 name: Update usage graph
 on:
   schedule:
-    - cron: "1 0 * * *" # 1 minute after the Supabase daily_logs should've updated
+    - cron: "54 23 * * *"
   workflow_dispatch:
 jobs:
   generate-usage-graph:
@@ -19,7 +19,8 @@ jobs:
         run: |
           npm install
           npm start
-          tree -L 1
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
       - name: Commit image
         uses: EndBug/add-and-commit@v9.1.4
         with:
