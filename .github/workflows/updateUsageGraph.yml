@@ -17,7 +17,7 @@ jobs:
           cache: "npm"
       - name: Generate graph
         run: |
-          npm install
+          npm ci
           npm start
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
