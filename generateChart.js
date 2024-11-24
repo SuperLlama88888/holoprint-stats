@@ -36,6 +36,7 @@ function updateChart() {
 		let data = res["data"];
 		let labels = data.map(row => row["day"]);
 		let structureCounts = data.map(row => row["structure_count"]);
+		let structureCombinationCounts = data.map(row => row["structure_combination_count"]);
 		let packCounts = data.map(row => row["pack_count"]);
 		
 		let graphConfig = {
@@ -50,11 +51,17 @@ function updateChart() {
 						fill: false,
 					},
 					{
+						label: "Structure file combinations",
+						data: structureCombinationCounts,
+						borderColor: "#C588C5",
+						fill: false,
+					},
+					{
 						label: "Total packs created",
 						data: packCounts,
 						borderColor: "#967896",
 						fill: false,
-					},
+					}
 				],
 			},
 			options: {
